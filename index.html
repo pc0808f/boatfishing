@@ -137,7 +137,7 @@
   .fish .item.egg{border-color:var(--gold);}
   .fish .item.egg .tag{background:var(--gold); color:#3a2c00;}
 
-  .fish .item img{cursor:zoom-in;}
+  .card img{cursor:zoom-in;}
 
   /* 點擊放大燈箱 */
   .lb{display:none; position:fixed; inset:0; z-index:9999; background:rgba(8,16,32,.94);
@@ -506,12 +506,14 @@
   var lb = document.getElementById('lightbox'),
       img = document.getElementById('lbImg'),
       cap = document.getElementById('lbCap');
-  // 讓「魚貨小知識」的魚照可點擊放大
-  document.querySelectorAll('.fish .item img').forEach(function(el){
+  // 讓所有照片可點擊放大（魚貨、船&釣點、報到路線、拍照示範、防暈船海報…）
+  document.querySelectorAll('.card img').forEach(function(el){
     el.addEventListener('click', function(){
-      img.src = el.src;
-      var nm = el.closest('.item').querySelector('.nm');
-      cap.textContent = nm ? nm.textContent : '';
+      img.src = el.currentSrc || el.src;
+      var item = el.closest('.item'), fig = el.closest('figure'), t = '';
+      if(item){ var nm = item.querySelector('.nm'); t = nm ? nm.textContent : ''; }
+      else if(fig){ var fc = fig.querySelector('figcaption'); t = fc ? fc.textContent : ''; }
+      cap.textContent = t || el.alt || '';
       lb.classList.add('open');
     });
   });
