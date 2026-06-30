@@ -118,16 +118,22 @@
   /* 魚圖鑑 */
   .subhead{margin:16px 0 8px; font-size:18px; font-weight:800; color:var(--navy2);}
   .subhead.no{color:var(--red);}
-  .fish{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
-  .fish .item{background:#fffdf4; border:2px solid var(--line); border-radius:14px; overflow:hidden; position:relative; break-inside:avoid;}
-  .fish img{width:100%; height:135px; object-fit:cover; display:block; border-bottom:1px solid var(--line);}
-  .fish .nm{font-weight:800; color:var(--navy2); padding:8px 10px 0; font-size:17px;}
-  .fish .ds{padding:2px 10px 12px; font-size:13.5px; color:#5a5236; line-height:1.6;}
+  .fish{display:flex; flex-direction:column; gap:12px;}
+  .fish .item{display:flex; background:#fffdf4; border:2px solid var(--line); border-radius:14px; overflow:hidden; position:relative; break-inside:avoid;}
+  .fish .item img{width:40%; max-width:180px; min-width:120px; object-fit:cover; display:block; align-self:stretch; border-right:1px solid var(--line);}
+  .fish .txt{padding:11px 14px; flex:1;}
+  .fish .nm{font-weight:800; color:var(--navy2); font-size:18px; margin-bottom:5px;}
+  .fish .ds{font-size:14px; color:#5a5236; line-height:1.65;}
   .fish .item.nope{border-color:var(--red); border-style:dashed;}
   .fish .item.nope img{filter:grayscale(.35);}
-  .fish .tag{position:absolute; top:8px; right:8px; background:var(--red); color:#fff; font-size:12px; font-weight:700; padding:2px 8px; border-radius:999px;}
-  .fish .item.egg{border-color:var(--gold); border-style:solid;}
+  .fish .tag{position:absolute; top:8px; left:8px; background:var(--red); color:#fff; font-size:12px; font-weight:700; padding:2px 8px; border-radius:999px; z-index:1;}
+  .fish .item.egg{border-color:var(--gold);}
   .fish .item.egg .tag{background:var(--gold); color:#3a2c00;}
+
+  /* 直式照片並排（拍照教學） */
+  .portraits{display:flex; gap:10px; justify-content:center; margin-top:10px;}
+  .portraits figure{margin:0; flex:1; max-width:50%;}
+  .portraits img{width:100%; height:auto; border-radius:12px; border:2px solid var(--line); display:block;}
   video{width:100%; border-radius:12px; border:2px solid var(--line); background:#000;}
 
   .contact{
@@ -143,14 +149,39 @@
   /* PRINT / PDF */
   @media print{
     *{-webkit-print-color-adjust:exact !important; print-color-adjust:exact !important;}
-    body{background:#fff;}
-    .wrap{max-width:100%;}
-    .card,.hero{box-shadow:none; break-inside:avoid;}
-    .no-print{display:none;}
-    a[href^="http"]::after{content:" (" attr(href) ")"; font-size:11px; color:#555;}
-    .gallery img{height:auto;}
+    body{background:#fff; font-size:11.5pt; line-height:1.6;}
+    .wrap{max-width:100%; padding:0;}
+    .no-print{display:none !important;}
+
+    /* 卡片本身可跨頁；只鎖「小單元」不被切斷，避免大片空白 */
+    .card{box-shadow:none; margin:8px 0; border-radius:10px; break-inside:auto;}
+    .hero{box-shadow:none; border-radius:10px; padding:16px; break-inside:avoid;}
+    .hero h1{font-size:30px;}
+    h2{break-after:avoid; font-size:18px;}
+    .card>h2{break-before:auto;}
+
+    /* 原子單元不可切斷 */
+    figure,
+    .fish .item,
+    .steps>li,
+    .tl li,
+    .chk li,
+    .nav,
+    .tip,
+    .guide img,
+    .contact{break-inside:avoid; page-break-inside:avoid;}
+
+    /* 圖片尺寸控制：固定高度＋裁切，版面整齊 */
+    .gallery{gap:8px;}
+    .gallery img{height:52mm; object-fit:cover;}
+    .fish .item img{width:36mm; min-width:36mm; max-width:36mm;}
+    .portraits img{max-height:95mm; width:auto; max-width:100%;}
+    .guide img{max-height:160mm; width:auto; max-width:100%; height:auto; margin:6px auto;}
+    video{max-height:75mm; object-fit:cover;}
+    footer img{max-height:65mm; object-fit:cover;}
+    .btn{border-width:1px; padding:6px 12px;}
   }
-  @page{margin:14mm;}
+  @page{margin:12mm;}
 </style>
 </head>
 <body>
@@ -160,7 +191,7 @@
     <span class="moon">🌙</span><span class="squid">🦑</span>
     <h1>船釣小搞搞</h1>
     <div class="sub">基隆八斗子・夜釣初體驗</div>
-    <span class="badge">2026 / 7 / 4（五）傍晚開船</span>
+    <span class="badge">2026 / 7 / 4（六）傍晚開船</span>
     <p class="joke">「人生苦短，海鮮不能等。<br>這次我們不買魚——我們自己釣！🎣」</p>
     <p class="no-print" style="margin-top:14px;">
       <a href="船釣小搞搞_7月4日.pdf" download
@@ -198,7 +229,7 @@
     <div class="nav">
       <b>🚗 車上導航 / 沒在用手機的人：</b>
       在車機或 Google Maps 搜尋欄輸入：<span class="kw">八斗子觀光漁港 B區停車場</span><br>
-      找不到就搜 <span class="kw">八斗子觀光漁港</span>，或直接輸入座標 <span class="kw">25.1448135, 121.7863154</span>
+      找不到就搜 <span class="kw">八斗子觀光漁港</span> 就到了。
     </div>
 
     <p style="margin-top:18px;"><b>② 再走過去報到：</b>富悠海上旅遊<br>
@@ -206,9 +237,21 @@
     <a class="btn" href="https://maps.app.goo.gl/9Y2KfbiHsvvk58RcA" target="_blank" rel="noopener">點我手機導航</a>
     <div class="nav">
       <b>🚗 車上導航 / 沒在用手機的人：</b>
-      在車機或 Google Maps 搜尋欄輸入：<span class="kw">富悠海上旅遊</span><br>
-      或直接輸入座標 <span class="kw">25.1459352, 121.785952</span>（報到處就在停車場走路 2 分鐘範圍內）
+      在車機或 Google Maps 搜尋欄輸入：<span class="kw">富悠海上旅遊</span>，
+      就在停車場走路 2 分鐘範圍內。
     </div>
+  </section>
+
+  <!-- 路線實景 -->
+  <section class="card">
+    <h2><span class="emo">🧭</span> 報到路線實景（跟著走不迷路）</h2>
+    <div class="gallery">
+      <figure><img loading="lazy" src="assets/images/停車場入口.jpg" alt="停車場入口"><figcaption>① 停車場入口</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/往管理室方向走.jpg" alt="往管理室方向走"><figcaption>② 往管理室方向</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/商店大街.jpg" alt="商店大街"><figcaption>③ 經過商店大街</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/集合地點.jpg" alt="集合地點"><figcaption>④ 抵達集合地點</figcaption></figure>
+    </div>
+    <p class="tip">🚻 小提醒：有些人停好車會從<strong>廁所方向</strong>過來，那就不會經過管理室——<strong>直接走到商店大街（③）</strong>會合即可！</p>
   </section>
 
   <!-- 好消息 -->
@@ -315,11 +358,11 @@
       <li><b>多拍合照、連拍防晃 🌊</b><br>
         甲板找個乾淨背景大家一起入鏡；海上會晃，<strong>連拍幾張</strong>再挑最清楚的。</li>
     </ol>
-    <div class="gallery">
+    <div class="portraits">
       <figure><img loading="lazy" src="assets/images/拍照參考_舉魚微笑.jpg" alt="舉魚微笑示範"><figcaption>① 魚靠鏡頭＋露牙笑</figcaption></figure>
       <figure><img loading="lazy" src="assets/images/拍照參考_戰利品直舉.jpg" alt="戰利品直舉示範"><figcaption>② 白帶魚垂直舉高</figcaption></figure>
     </div>
-    <figure style="margin:10px 0 0;">
+    <figure style="margin:12px 0 0;">
       <img loading="lazy" src="assets/images/拍照參考_甲板比讚合照.jpg" alt="甲板比讚合照示範" style="width:100%;border-radius:12px;border:2px solid var(--line);display:block;">
       <figcaption>③ 甲板合照，一起比讚最歡樂</figcaption>
     </figure>
@@ -334,33 +377,45 @@
     <div class="fish">
       <div class="item">
         <img loading="lazy" src="assets/images/fish/竹筴魚.jpg" alt="竹筴魚">
-        <div class="nm">竹筴魚</div>
-        <div class="ds">夜釣常客，常常整桶整桶上！肉質鮮甜，做一夜干或鹽烤，配啤酒一流。</div>
+        <div class="txt">
+          <div class="nm">竹筴魚</div>
+          <div class="ds">夜釣常客，常常整桶整桶上！肉質鮮甜，做一夜干或鹽烤，配啤酒一流。</div>
+        </div>
       </div>
       <div class="item">
         <img loading="lazy" src="assets/images/fish/鯖魚.jpg" alt="鯖魚">
-        <div class="nm">鯖魚（花飛）</div>
-        <div class="ds">青背油脂控的最愛，背上有漂亮波浪花紋（這張左邊就是！右邊那尾是竹筴魚）。鹽烤、味噌煮一流。</div>
+        <div class="txt">
+          <div class="nm">鯖魚（花飛）</div>
+          <div class="ds">青背油脂控的最愛，背上有漂亮波浪花紋（這張左邊就是！右邊那尾是竹筴魚）。鹽烤、味噌煮一流。</div>
+        </div>
       </div>
       <div class="item">
         <img loading="lazy" src="assets/images/fish/白帶魚.jpg" alt="白帶魚">
-        <div class="nm">白帶魚</div>
-        <div class="ds">今晚頭號主角！銀亮亮像一把武士刀，越長越威。牙齒超利，帥歸帥別摸嘴。</div>
+        <div class="txt">
+          <div class="nm">白帶魚</div>
+          <div class="ds">今晚頭號主角！銀亮亮像一把武士刀，越長越威。牙齒超利，帥歸帥別摸嘴。</div>
+        </div>
       </div>
       <div class="item">
         <img loading="lazy" src="assets/images/fish/透抽.jpg" alt="透抽">
-        <div class="nm">透抽（中卷）</div>
-        <div class="ds">滿船燈火就是為了牠！Q彈鮮甜、透明會發光，燙一下沾哇沙米直接升天。</div>
+        <div class="txt">
+          <div class="nm">透抽（中卷）</div>
+          <div class="ds">滿船燈火就是為了牠！Q彈鮮甜、透明會發光，燙一下沾哇沙米直接升天。</div>
+        </div>
       </div>
       <div class="item">
         <img loading="lazy" src="assets/images/fish/尖梭.jpg" alt="尖梭">
-        <div class="nm">尖梭</div>
-        <div class="ds">海中小魚雷，速度快、咬餌兇，中魚那瞬間手感超爆。烤一烤香酥涮嘴。</div>
+        <div class="txt">
+          <div class="nm">尖梭</div>
+          <div class="ds">海中小魚雷，速度快、咬餌兇，中魚那瞬間手感超爆。烤一烤香酥涮嘴。</div>
+        </div>
       </div>
       <div class="item">
         <img loading="lazy" src="assets/images/fish/煙仔魚.jpg" alt="煙仔魚">
-        <div class="nm">煙仔魚</div>
-        <div class="ds">鰹魚家族衝刺王，一中鉤就狂奔，新手會以為釣到潛水艇。生魚片超讚。</div>
+        <div class="txt">
+          <div class="nm">煙仔魚</div>
+          <div class="ds">鰹魚家族衝刺王，一中鉤就狂奔，新手會以為釣到潛水艇。生魚片超讚。</div>
+        </div>
       </div>
     </div>
 
@@ -369,35 +424,29 @@
       <div class="item nope">
         <span class="tag">✗ 今晚no</span>
         <img loading="lazy" src="assets/images/fish/青旗魚.jpg" alt="青旗魚">
-        <div class="nm">青旗魚</div>
-        <div class="ds">海上 F1 賽車，衝刺破 70km/h，背鰭一張像揚帆。這種大物今晚不是我們的菜。</div>
+        <div class="txt">
+          <div class="nm">青旗魚（扁鶴鱵）</div>
+          <div class="ds">學名橫帶扁頜針魚，俗稱青旗、學仔、鱟魚。細長像一支銀色標槍，尖嘴一根長喙，骨頭還是夢幻的<strong>青綠色</strong>！游超快、會躍出水面，多在堤防邊出沒，今晚船釣通常遇不到牠。</div>
+        </div>
       </div>
       <div class="item egg">
         <span class="tag">🥚 彩蛋！</span>
         <img loading="lazy" src="assets/images/fish/鬼頭刀.jpg" alt="鬼頭刀">
-        <div class="nm">鬼頭刀</div>
-        <div class="ds">額頭方方、體色夢幻漸層的洄游悍將。原本以為釣不到——結果<strong>釣友這次真的給牠拉上船，傳奇誕生！</strong></div>
+        <div class="txt">
+          <div class="nm">鬼頭刀</div>
+          <div class="ds">額頭方方、體色夢幻漸層的洄游悍將。原本以為釣不到——結果<strong>釣友這次真的給牠拉上船，傳奇誕生！</strong></div>
+        </div>
       </div>
       <div class="item nope">
         <span class="tag">✗ 今晚no</span>
         <img loading="lazy" src="assets/images/fish/飛魚.jpg" alt="飛魚">
-        <div class="nm">飛魚</div>
-        <div class="ds">會「飛」的魚！張開胸鰭滑翔躲天敵，一口氣能飄數百公尺。蘭嶼名產，但牠不咬鉤，純欣賞。</div>
+        <div class="txt">
+          <div class="nm">飛魚</div>
+          <div class="ds">會「飛」的魚！張開胸鰭滑翔躲天敵，一口氣能飄數百公尺。蘭嶼名產，但牠不咬鉤，純欣賞。</div>
+        </div>
       </div>
     </div>
     <p class="lead" style="margin-top:10px;">📷 魚種照片若取自網路，皆為可自由使用之授權，出處見 <code>assets/images/fish/CREDITS.md</code>。</p>
-  </section>
-
-  <!-- 路線實景 -->
-  <section class="card">
-    <h2><span class="emo">🧭</span> 報到路線實景（跟著走不迷路）</h2>
-    <div class="gallery">
-      <figure><img loading="lazy" src="assets/images/停車場入口.jpg" alt="停車場入口"><figcaption>① 停車場入口</figcaption></figure>
-      <figure><img loading="lazy" src="assets/images/往管理室方向走.jpg" alt="往管理室方向走"><figcaption>② 往管理室方向</figcaption></figure>
-      <figure><img loading="lazy" src="assets/images/商店大街.jpg" alt="商店大街"><figcaption>③ 經過商店大街</figcaption></figure>
-      <figure><img loading="lazy" src="assets/images/集合地點.jpg" alt="集合地點"><figcaption>④ 抵達集合地點</figcaption></figure>
-    </div>
-    <p class="tip">🚻 小提醒：有些人停好車會從<strong>廁所方向</strong>過來，那就不會經過管理室——<strong>直接走到商店大街（③）</strong>會合即可！</p>
   </section>
 
   <!-- 聯絡 -->
