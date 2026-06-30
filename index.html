@@ -130,6 +130,18 @@
   .fish .item.egg{border-color:var(--gold);}
   .fish .item.egg .tag{background:var(--gold); color:#3a2c00;}
 
+  .fish .item img{cursor:zoom-in;}
+
+  /* 點擊放大燈箱 */
+  .lb{display:none; position:fixed; inset:0; z-index:9999; background:rgba(8,16,32,.94);
+      align-items:center; justify-content:center; flex-direction:column; padding:18px; cursor:zoom-out;}
+  .lb.open{display:flex;}
+  .lb img{max-width:100%; max-height:82vh; border-radius:10px; border:2px solid var(--gold);
+          box-shadow:0 10px 40px #000a;}
+  .lb .cap{color:#fff; font-weight:700; margin-top:12px; font-size:17px;}
+  .lb .x{position:absolute; top:14px; right:18px; color:#fff; font-size:34px; line-height:1; font-weight:800;}
+  .lb .hint{position:absolute; bottom:16px; left:0; right:0; text-align:center; color:#ffffffaa; font-size:13px;}
+
   /* 直式照片並排（拍照教學） */
   .portraits{display:flex; gap:10px; justify-content:center; margin-top:10px;}
   .portraits figure{margin:0; flex:1; max-width:50%;}
@@ -463,5 +475,32 @@
   </footer>
 
 </div>
+
+<!-- 點擊放大燈箱 -->
+<div id="lightbox" class="lb no-print" role="dialog" aria-modal="true">
+  <span class="x">×</span>
+  <img id="lbImg" src="" alt="">
+  <div class="cap" id="lbCap"></div>
+  <div class="hint">點任意處關閉</div>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('lightbox'),
+      img = document.getElementById('lbImg'),
+      cap = document.getElementById('lbCap');
+  // 讓「魚貨小知識」的魚照可點擊放大
+  document.querySelectorAll('.fish .item img').forEach(function(el){
+    el.addEventListener('click', function(){
+      img.src = el.src;
+      var nm = el.closest('.item').querySelector('.nm');
+      cap.textContent = nm ? nm.textContent : '';
+      lb.classList.add('open');
+    });
+  });
+  function close(){ lb.classList.remove('open'); img.src=''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
 </body>
 </html>
