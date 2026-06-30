@@ -116,17 +116,24 @@
   .guide img{width:100%; border-radius:12px; border:2px solid var(--line); margin-top:10px; display:block;}
 
   /* 魚圖鑑 */
-  .subhead{margin:16px 0 8px; font-size:18px; font-weight:800; color:var(--navy2);}
-  .subhead.no{color:var(--red);}
+  .subhead{margin:18px 0 8px; font-size:18px; font-weight:800; color:var(--navy2);}
+  .subhead.main{color:var(--red);}
+  .subhead.dream{color:#7a6cae;}
+  .subhead.watch{color:var(--teal);}
   .fish{display:flex; flex-direction:column; gap:12px;}
   .fish .item{display:flex; background:#fffdf4; border:2px solid var(--line); border-radius:14px; overflow:hidden; position:relative; break-inside:avoid;}
   .fish .item img{width:40%; max-width:180px; min-width:120px; object-fit:cover; display:block; align-self:stretch; border-right:1px solid var(--line);}
   .fish .txt{padding:11px 14px; flex:1;}
   .fish .nm{font-weight:800; color:var(--navy2); font-size:18px; margin-bottom:5px;}
   .fish .ds{font-size:14px; color:#5a5236; line-height:1.65;}
-  .fish .item.nope{border-color:var(--red); border-style:dashed;}
-  .fish .item.nope img{filter:grayscale(.35);}
   .fish .tag{position:absolute; top:8px; left:8px; background:var(--red); color:#fff; font-size:12px; font-weight:700; padding:2px 8px; border-radius:999px; z-index:1;}
+  .fish .item.star{border-color:var(--gold); border-width:3px;}
+  .fish .item.star .tag{background:var(--gold); color:#3a2c00;}
+  .fish .item.dream{border-color:#bcaee6; border-style:dashed;}
+  .fish .item.dream img{filter:grayscale(.25);}
+  .fish .item.dream .tag{background:#7a6cae; color:#fff;}
+  .fish .item.watch{border-color:var(--teal);}
+  .fish .item.watch .tag{background:var(--teal); color:#fff;}
   .fish .item.egg{border-color:var(--gold);}
   .fish .item.egg .tag{background:var(--gold); color:#3a2c00;}
 
@@ -385,34 +392,33 @@
     <h2><span class="emo">🐟</span> 魚貨小知識（今晚的對手們）</h2>
     <p class="lead">先認識一下牠們，等等中魚才不會問「這啥？」。照片大多是<strong>釣友這次的實際戰利品</strong>哦！</p>
 
-    <div class="subhead">✅ 可能會釣到的</div>
+    <div class="subhead main">🎯 主要對象（這週主力，多數人都中這兩種）</div>
     <div class="fish">
-      <div class="item">
+      <div class="item star">
+        <span class="tag">🎯 主力</span>
         <img loading="lazy" src="assets/images/fish/竹筴魚.jpg" alt="竹筴魚">
         <div class="txt">
           <div class="nm">竹筴魚</div>
           <div class="ds">夜釣常客，常常整桶整桶上！肉質鮮甜，做一夜干或鹽烤，配啤酒一流。</div>
         </div>
       </div>
-      <div class="item">
-        <img loading="lazy" src="assets/images/fish/鯖魚.jpg" alt="鯖魚">
-        <div class="txt">
-          <div class="nm">鯖魚（花飛）</div>
-          <div class="ds">青背油脂控的最愛，背上有漂亮波浪花紋（這張左邊就是！右邊那尾是竹筴魚）。鹽烤、味噌煮一流。</div>
-        </div>
-      </div>
-      <div class="item">
+      <div class="item star">
+        <span class="tag">🎯 主力</span>
         <img loading="lazy" src="assets/images/fish/白帶魚.jpg" alt="白帶魚">
         <div class="txt">
           <div class="nm">白帶魚</div>
           <div class="ds">今晚頭號主角！銀亮亮像一把武士刀，越長越威。牙齒超利，帥歸帥別摸嘴。</div>
         </div>
       </div>
+    </div>
+
+    <div class="subhead">🎣 次要對象（也有機會上鉤）</div>
+    <div class="fish">
       <div class="item">
-        <img loading="lazy" src="assets/images/fish/透抽.jpg" alt="透抽">
+        <img loading="lazy" src="assets/images/fish/鯖魚.jpg" alt="鯖魚">
         <div class="txt">
-          <div class="nm">透抽（中卷）</div>
-          <div class="ds">滿船燈火就是為了牠！Q彈鮮甜、透明會發光，燙一下沾哇沙米直接升天。</div>
+          <div class="nm">鯖魚（花飛）</div>
+          <div class="ds">青背油脂控的最愛，背上有漂亮波浪花紋（這張左邊就是！右邊那尾是竹筴魚）。鹽烤、味噌煮一流。</div>
         </div>
       </div>
       <div class="item">
@@ -431,14 +437,14 @@
       </div>
     </div>
 
-    <div class="subhead no">🚫 這天通常釣不到的（純漲知識）</div>
+    <div class="subhead dream">✨ 夢幻對象（可遇不可求，純漲知識）</div>
     <div class="fish">
-      <div class="item nope">
-        <span class="tag">✗ 今晚no</span>
-        <img loading="lazy" src="assets/images/fish/青旗魚.jpg" alt="青旗魚">
+      <div class="item dream">
+        <span class="tag">✗ 沒釣組</span>
+        <img loading="lazy" src="assets/images/fish/透抽.jpg" alt="透抽">
         <div class="txt">
-          <div class="nm">青旗魚（扁鶴鱵）</div>
-          <div class="ds">學名橫帶扁頜針魚，俗稱青旗、學仔、鱟魚。細長像一支銀色標槍，尖嘴一根長喙，骨頭還是夢幻的<strong>青綠色</strong>！游超快、會躍出水面，多在堤防邊出沒，今晚船釣通常遇不到牠。</div>
+          <div class="nm">透抽（中卷）</div>
+          <div class="ds">Q彈鮮甜、透明會發光的海中明星。可惜<strong>船長這次沒準備透抽的釣組（餌木）</strong>，所以基本上釣不到——看照片解解饞就好。</div>
         </div>
       </div>
       <div class="item egg">
@@ -449,12 +455,24 @@
           <div class="ds">額頭方方、體色夢幻漸層的洄游悍將。原本以為釣不到——結果<strong>釣友這次真的給牠拉上船，傳奇誕生！</strong></div>
         </div>
       </div>
-      <div class="item nope">
-        <span class="tag">✗ 今晚no</span>
+    </div>
+
+    <div class="subhead watch">👀 觀賞魚（不釣，但會在船邊跑來跑去）</div>
+    <div class="fish">
+      <div class="item watch">
+        <span class="tag">👀 觀賞</span>
+        <img loading="lazy" src="assets/images/fish/青旗魚.jpg" alt="青旗魚">
+        <div class="txt">
+          <div class="nm">青旗魚（扁鶴鱵）</div>
+          <div class="ds">學名橫帶扁頜針魚，俗稱青旗、學仔、鱟魚。細長像銀色標槍、尖嘴長喙，骨頭還是夢幻的<strong>青綠色</strong>！常成群在<strong>船邊水面竄來竄去</strong>，是燈光下的觀賞常客。</div>
+        </div>
+      </div>
+      <div class="item watch">
+        <span class="tag">👀 觀賞</span>
         <img loading="lazy" src="assets/images/fish/飛魚.jpg" alt="飛魚">
         <div class="txt">
           <div class="nm">飛魚</div>
-          <div class="ds">會「飛」的魚！張開胸鰭滑翔躲天敵，一口氣能飄數百公尺。蘭嶼名產，但牠不咬鉤，純欣賞。</div>
+          <div class="ds">會「飛」的魚！張開胸鰭就能滑翔數百公尺，常在<strong>船邊水面飆來飆去</strong>，看牠起飛超療癒——不是釣的對象，純欣賞。</div>
         </div>
       </div>
     </div>
