@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7/4 船釣小搞搞 🎣 活動懶人包</title>
+<style>
+  :root{
+    --navy:#0c1f3a; --navy2:#13294d; --card:#fdf6e3; --ink:#1b2a41;
+    --gold:#f2c14e; --red:#d9534f; --teal:#2f8f83; --line:#c9b98f;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; color:var(--ink); font-size:17px; line-height:1.75;
+    font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;
+    background:var(--navy);
+    background-image:radial-gradient(#ffffff22 1px,transparent 1px),
+                     radial-gradient(#ffffff11 1px,transparent 1px);
+    background-size:40px 40px,80px 80px;
+    background-position:0 0,20px 20px;
+  }
+  .wrap{max-width:620px; margin:0 auto; padding:16px;}
+
+  /* HERO */
+  .hero{
+    text-align:center; color:#fff; padding:34px 18px 26px;
+    background:linear-gradient(180deg,#0a1830,#13294d);
+    border:2px solid var(--gold); border-radius:22px; position:relative; overflow:hidden;
+    box-shadow:0 8px 30px #0006;
+  }
+  .hero .moon{position:absolute; top:14px; left:18px; font-size:30px;}
+  .hero .squid{position:absolute; top:14px; right:18px; font-size:30px;}
+  .hero h1{
+    margin:.2em 0 .1em; font-size:40px; letter-spacing:2px; color:var(--gold);
+    text-shadow:2px 3px 0 #00000055;
+  }
+  .hero .sub{font-size:18px; opacity:.95; margin:4px 0;}
+  .hero .badge{
+    display:inline-block; margin-top:12px; background:var(--red); color:#fff;
+    padding:6px 16px; border-radius:999px; font-weight:700; font-size:16px;
+  }
+  .hero .joke{font-size:15px; opacity:.85; margin-top:14px; font-style:italic;}
+
+  /* CARD */
+  .card{
+    background:var(--card); border-radius:18px; padding:20px 18px; margin:18px 0;
+    border:2px solid var(--line); box-shadow:0 6px 18px #0004;
+  }
+  .card h2{
+    margin:0 0 12px; font-size:23px; color:var(--navy2);
+    border-bottom:3px dashed var(--line); padding-bottom:8px;
+  }
+  .card h2 .emo{font-size:26px;}
+  p{margin:.5em 0;}
+  .lead{font-size:15px; color:#5a5236;}
+  strong{color:var(--red);}
+
+  /* TIMELINE */
+  .tl{list-style:none; margin:0; padding:0;}
+  .tl li{
+    position:relative; padding:10px 0 14px 70px; border-left:3px solid var(--teal);
+    margin-left:46px;
+  }
+  .tl li:last-child{border-left:3px solid transparent;}
+  .tl .clock{
+    position:absolute; left:-46px; top:6px; width:64px; text-align:center;
+    background:var(--teal); color:#fff; border-radius:10px; padding:4px 0;
+    font-weight:800; font-size:16px;
+  }
+  .tl b{font-size:18px;}
+  .tl.warn .clock{background:var(--red);}
+
+  /* BUTTONS */
+  .btn{
+    display:inline-block; background:var(--navy2); color:#fff !important; text-decoration:none;
+    padding:10px 16px; border-radius:12px; font-weight:700; margin:6px 6px 6px 0;
+    border:2px solid var(--gold);
+  }
+  .btn::before{content:"📱 ";}
+
+  /* 車用導航提示 */
+  .nav{
+    background:#eef6f4; border:2px dashed var(--teal); border-radius:12px;
+    padding:10px 12px; margin:8px 0 0; font-size:15px; line-height:1.7;
+  }
+  .nav b{color:var(--teal);}
+  .kw{
+    display:inline-block; background:#fff; border:1px solid var(--line); border-radius:6px;
+    padding:1px 8px; margin:2px 0; font-weight:700; color:var(--navy2);
+    font-family:"PingFang TC","Microsoft JhengHei",monospace; user-select:all;
+  }
+
+  /* CHECKLIST */
+  .chk{list-style:none; padding:0; margin:.5em 0;}
+  .chk li{padding:6px 0 6px 32px; position:relative;}
+  .chk li::before{content:"✅"; position:absolute; left:0;}
+
+  /* STEPS */
+  .steps{counter-reset:s; list-style:none; padding:0; margin:0;}
+  .steps>li{
+    position:relative; background:#fffdf4; border:2px solid var(--line);
+    border-radius:14px; padding:14px 14px 14px 58px; margin:12px 0;
+  }
+  .steps>li::before{
+    counter-increment:s; content:counter(s); position:absolute; left:12px; top:12px;
+    width:34px; height:34px; background:var(--gold); color:#3a2c00; font-weight:900;
+    border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px;
+  }
+  .steps b{font-size:18px; color:var(--navy2);}
+
+  /* IMAGES */
+  .gallery{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .gallery figure{margin:0;}
+  .gallery img{width:100%; height:150px; object-fit:cover; border-radius:12px; border:2px solid var(--line);}
+  figcaption{font-size:13px; text-align:center; color:#5a5236; margin-top:4px;}
+  .guide img{width:100%; border-radius:12px; border:2px solid var(--line); margin-top:10px; display:block;}
+
+  /* 魚圖鑑 */
+  .subhead{margin:16px 0 8px; font-size:18px; font-weight:800; color:var(--navy2);}
+  .subhead.no{color:var(--red);}
+  .fish{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .fish .item{background:#fffdf4; border:2px solid var(--line); border-radius:14px; overflow:hidden; position:relative; break-inside:avoid;}
+  .fish img{width:100%; height:135px; object-fit:cover; display:block; border-bottom:1px solid var(--line);}
+  .fish .nm{font-weight:800; color:var(--navy2); padding:8px 10px 0; font-size:17px;}
+  .fish .ds{padding:2px 10px 12px; font-size:13.5px; color:#5a5236; line-height:1.6;}
+  .fish .item.nope{border-color:var(--red); border-style:dashed;}
+  .fish .item.nope img{filter:grayscale(.35);}
+  .fish .tag{position:absolute; top:8px; right:8px; background:var(--red); color:#fff; font-size:12px; font-weight:700; padding:2px 8px; border-radius:999px;}
+  .fish .item.egg{border-color:var(--gold); border-style:solid;}
+  .fish .item.egg .tag{background:var(--gold); color:#3a2c00;}
+  video{width:100%; border-radius:12px; border:2px solid var(--line); background:#000;}
+
+  .contact{
+    text-align:center; background:var(--navy2); color:#fff; border:2px solid var(--gold);
+  }
+  .contact h2{color:var(--gold); border-color:#ffffff44;}
+  .contact .phone{font-size:30px; font-weight:900; color:var(--gold); letter-spacing:1px;}
+  .contact a{color:var(--gold);}
+
+  footer{text-align:center; color:#cdd7e6; font-size:14px; padding:20px 10px 36px;}
+  .tip{background:#fff7d6; border-left:5px solid var(--gold); padding:10px 12px; border-radius:8px; font-size:15px;}
+
+  /* PRINT / PDF */
+  @media print{
+    *{-webkit-print-color-adjust:exact !important; print-color-adjust:exact !important;}
+    body{background:#fff;}
+    .wrap{max-width:100%;}
+    .card,.hero{box-shadow:none; break-inside:avoid;}
+    .no-print{display:none;}
+    a[href^="http"]::after{content:" (" attr(href) ")"; font-size:11px; color:#555;}
+    .gallery img{height:auto;}
+  }
+  @page{margin:14mm;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="moon">🌙</span><span class="squid">🦑</span>
+    <h1>船釣小搞搞</h1>
+    <div class="sub">基隆八斗子・夜釣初體驗</div>
+    <span class="badge">2026 / 7 / 4（五）傍晚開船</span>
+    <p class="joke">「人生苦短，海鮮不能等。<br>這次我們不買魚——我們自己釣！🎣」</p>
+    <p class="no-print" style="margin-top:14px;">
+      <a href="船釣小搞搞_7月4日.pdf" download
+         style="display:inline-block;background:var(--gold);color:#3a2c00;text-decoration:none;padding:9px 18px;border-radius:999px;font-weight:800;">
+        📄 下載離線 PDF（沒網路也能看）
+      </a>
+    </p>
+  </header>
+
+  <!-- 時間 -->
+  <section class="card">
+    <h2><span class="emo">⏰</span> 時間軸（遲到者の悲歌）</h2>
+    <ul class="tl warn">
+      <li><span class="clock">16:30</span>
+        <b>準時集合</b><br>
+        準時！準時！準時！很重要所以講三次。船長會先教<strong>釣組怎麼用</strong>，遲到的人……只能看別人釣魚，然後懷疑人生。</li>
+    </ul>
+    <ul class="tl">
+      <li><span class="clock">17:00</span>
+        <b>準時出船</b><br>
+        船真的不等人，海上沒有 Uber，也沒有下一班。錯過就只能在岸邊跟海浪揮手。</li>
+      <li><span class="clock">21:00</span>
+        <b>滿載回程</b><br>
+        帶著魚（和星空的回憶）靠岸。漁夫們，辛苦了！</li>
+    </ul>
+    <p class="tip">⚠️ 一句話總結：<strong>4:30 前一定要到</strong>，晚到學不到釣組，魚會笑你。</p>
+  </section>
+
+  <!-- 地點 -->
+  <section class="card">
+    <h2><span class="emo">🚗</span> 怎麼去・在哪集合</h2>
+    <p><b>① 先停車：</b>八斗子觀光漁港 <strong>B區停車場</strong><br>
+    付費停車，一晚大約 <strong>NT$240～300</strong>（停車費就當作買魚的本錢 😎）。</p>
+    <a class="btn" href="https://maps.app.goo.gl/7NQcd3fgXXKJPCk36" target="_blank" rel="noopener">點我手機導航</a>
+    <div class="nav">
+      <b>🚗 車上導航 / 沒在用手機的人：</b>
+      在車機或 Google Maps 搜尋欄輸入：<span class="kw">八斗子觀光漁港 B區停車場</span><br>
+      找不到就搜 <span class="kw">八斗子觀光漁港</span>，或直接輸入座標 <span class="kw">25.1448135, 121.7863154</span>
+    </div>
+
+    <p style="margin-top:18px;"><b>② 再走過去報到：</b>富悠海上旅遊<br>
+    <strong>『龍之心號、舜龍號 報到處』</strong>——停好車跟著人潮走就對了。</p>
+    <a class="btn" href="https://maps.app.goo.gl/9Y2KfbiHsvvk58RcA" target="_blank" rel="noopener">點我手機導航</a>
+    <div class="nav">
+      <b>🚗 車上導航 / 沒在用手機的人：</b>
+      在車機或 Google Maps 搜尋欄輸入：<span class="kw">富悠海上旅遊</span><br>
+      或直接輸入座標 <span class="kw">25.1459352, 121.785952</span>（報到處就在停車場走路 2 分鐘範圍內）
+    </div>
+  </section>
+
+  <!-- 好消息 -->
+  <section class="card">
+    <h2><span class="emo">🎉</span> 三個好消息（錢包の福音）</h2>
+    <ul class="chk">
+      <li><b>費用已收齊</b>──現場不用再掏錢包，雙手空空最瀟灑。</li>
+      <li><b>船上供餐</b>──有得吃！不用餓著肚子跟魚搏鬥。</li>
+      <li><b>釣具船長全包</b>──空手來就好，你只要帶一雙手和滿滿的好運。</li>
+    </ul>
+  </section>
+
+  <!-- 帶什麼 -->
+  <section class="card">
+    <h2><span class="emo">🎒</span> 記得帶這個</h2>
+    <ul class="chk">
+      <li><b>保冰袋 / 保冷袋</b>──釣到的魚可以<strong>帶回家</strong>！冰起來才新鮮，回家直接加菜，省一筆。</li>
+    </ul>
+    <p class="lead">（暈船藥很重要，獨立成下面一整段，請務必看 👇）</p>
+  </section>
+
+  <!-- 防暈船 -->
+  <section class="card">
+    <h2><span class="emo">🤢➡️😎</span> 防暈船三部曲</h2>
+    <p class="lead">大家都是第一次上船，暈起來可是會很掃興的。記好這口訣：<br>
+    <b>睡飽 → 提早吃藥 → 上船看遠處</b></p>
+    <ol class="steps">
+      <li><b>先睡飽 😴</b><br>
+        當天請讓孩子（還有大人！）<strong>睡個午覺</strong>，精神飽滿，暈船退散。</li>
+      <li><b>提早吃藥 💊</b><br>
+        暈船藥藥效約 <strong>8 小時</strong>，這次 17:00 出船、21:00 回程。
+        <strong>台北出發前就能先吃，抓 15～16 點最剛好</strong>（搭船前 2～3 小時，藥效最穩又涵蓋全程）。
+        很會暈的人？白天就先吃一次預防，超前部署。</li>
+      <li><b>上船看遠處 👀</b><br>
+        晚上看不到地平線會更容易暈，<strong>把視線放遠、看向遠方</strong>，幫身體搞清楚船在怎麼晃，頭就不轉了。</li>
+    </ol>
+    <div class="guide">
+      <img loading="lazy" src="assets/images/防暈船_提早服藥.jpg" alt="暈船藥要在搭船前 3 小時、最晚 2 小時吃">
+      <img loading="lazy" src="assets/images/防暈船_服藥時機.jpg" alt="依照出船時段安排服藥時機">
+      <img loading="lazy" src="assets/images/防暈船_看遠處.jpg" alt="在船上盡量看遠處比較不會暈">
+    </div>
+  </section>
+
+  <!-- 釣魚新手包 -->
+  <section class="card">
+    <h2><span class="emo">🎣</span> 釣魚新手包（看完你就是半個老手）</h2>
+    <p class="lead">完全沒釣過？放心，這天大家都馬一樣。口訣記起來：<br>
+    <b>沉到底 → 等點頭 → 抬竿 → 穩穩收</b></p>
+    <ol class="steps">
+      <li><b>先乖乖聽船長講 🧑‍✈️</b><br>
+        釣組怎麼用、餌怎麼掛，全在開船前那幾分鐘。<strong>這就是為什麼不能遲到</strong>（又說一次，因為真的很重要）。</li>
+      <li><b>下竿到底 ⬇️</b><br>
+        放線讓鉛錘沉到海底，再收個幾圈，把餌停在魚會經過的水層。船長會報「收幾圈」，照做就對了。</li>
+      <li><b>等魚來敲門 🐟</b><br>
+        竿尖開始<strong>點點點</strong>、或手感突然「沉一下、重一下」，恭喜，有魚在吃餌了。</li>
+      <li><b>抬竿中魚 ⤴️</b><br>
+        手腕往上俐落一抬「揚竿」，把鉤子刺牢。用<strong>巧勁不是蠻力</strong>，太用力線會斷、魚會笑。</li>
+      <li><b>穩穩收線 🎯</b><br>
+        不要急、不要停，速度穩定地收。魚靠近水面時，喊船長幫你抄網拉上來最保險。</li>
+      <li><b>小心牙齒 ⚠️</b><br>
+        白帶魚牙齒超利！<strong>不要徒手抓魚嘴</strong>，交給船長或用工具，手指要留著比讚拍照。</li>
+    </ol>
+  </section>
+
+  <!-- 影片 -->
+  <section class="card">
+    <h2><span class="emo">🎬</span> 30 秒變漁夫：釣魚教學</h2>
+    <p class="lead">上船前先預習，到時候帥氣甩竿，小孩崇拜的眼神就靠這支了。</p>
+    <video controls preload="none" poster="assets/images/當天搭的船.jpg">
+      <source src="assets/video/簡單釣魚教學.mp4" type="video/mp4">
+      你的瀏覽器看不了影片，請直接打開 assets/video 裡的檔案。
+    </video>
+  </section>
+
+  <!-- 船與釣點 -->
+  <section class="card">
+    <h2><span class="emo">🚢</span> 搶先看：我們的船 & 釣點</h2>
+    <p class="lead">先讓你心裡有個底，免得上船一直「哇～」耽誤釣魚。</p>
+    <div class="gallery">
+      <figure><img loading="lazy" src="assets/images/當天搭的船.jpg" alt="當天搭的船"><figcaption>今晚的座駕就是它</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/船內的樣子.jpg" alt="船內的樣子"><figcaption>船艙內部，可休息</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/在船頭釣魚的樣子.jpg" alt="在船頭釣魚"><figcaption>船頭釣魚區</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/在走道釣魚的樣子.jpg" alt="在走道釣魚"><figcaption>走道也能釣</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/後甲板也是釣魚區.jpg" alt="後甲板釣魚區"><figcaption>後甲板釣魚區</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/船的甲板可以躺著看星星.jpg" alt="甲板看星星"><figcaption>釣累了躺著看星星 ✨</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/餐點1.jpg" alt="餐點1"><figcaption>船上供餐 ①</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/餐點2.jpg" alt="餐點2"><figcaption>船上供餐 ②</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 拍照教學 -->
+  <section class="card">
+    <h2><span class="emo">📸</span> 戰利品這樣拍才霸氣</h2>
+    <p class="lead">釣到魚不拍照，等於沒釣到。記住這幾招，朋友圈讚數翻倍：</p>
+    <ol class="steps">
+      <li><b>魚往鏡頭伸出去 🤳</b><br>
+        「近大遠小」是物理也是魔法——手把魚往前伸靠近鏡頭，<strong>魚立刻大一倍</strong>，你還是你。</li>
+      <li><b>白帶魚直直舉起 📏</b><br>
+        牠又長又會反光，<strong>垂直舉高</strong>展現完整長度最壯觀（參考下圖一、二）。</li>
+      <li><b>借船上的燈 💡</b><br>
+        讓燈光打在臉和魚上，背景黑剛好把你變主角，自帶<strong>電影海報感</strong>。</li>
+      <li><b>表情要到位 😁</b><br>
+        露牙大笑或帥氣比讚，照片立刻有靈魂（參考下圖三）。</li>
+      <li><b>多拍合照、連拍防晃 🌊</b><br>
+        甲板找個乾淨背景大家一起入鏡；海上會晃，<strong>連拍幾張</strong>再挑最清楚的。</li>
+    </ol>
+    <div class="gallery">
+      <figure><img loading="lazy" src="assets/images/拍照參考_舉魚微笑.jpg" alt="舉魚微笑示範"><figcaption>① 魚靠鏡頭＋露牙笑</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/拍照參考_戰利品直舉.jpg" alt="戰利品直舉示範"><figcaption>② 白帶魚垂直舉高</figcaption></figure>
+    </div>
+    <figure style="margin:10px 0 0;">
+      <img loading="lazy" src="assets/images/拍照參考_甲板比讚合照.jpg" alt="甲板比讚合照示範" style="width:100%;border-radius:12px;border:2px solid var(--line);display:block;">
+      <figcaption>③ 甲板合照，一起比讚最歡樂</figcaption>
+    </figure>
+  </section>
+
+  <!-- 魚貨小知識 -->
+  <section class="card">
+    <h2><span class="emo">🐟</span> 魚貨小知識（今晚的對手們）</h2>
+    <p class="lead">先認識一下牠們，等等中魚才不會問「這啥？」。照片大多是<strong>釣友這次的實際戰利品</strong>哦！</p>
+
+    <div class="subhead">✅ 可能會釣到的</div>
+    <div class="fish">
+      <div class="item">
+        <img loading="lazy" src="assets/images/fish/竹筴魚.jpg" alt="竹筴魚">
+        <div class="nm">竹筴魚</div>
+        <div class="ds">夜釣常客，常常整桶整桶上！肉質鮮甜，做一夜干或鹽烤，配啤酒一流。</div>
+      </div>
+      <div class="item">
+        <img loading="lazy" src="assets/images/fish/鯖魚.jpg" alt="鯖魚">
+        <div class="nm">鯖魚（花飛）</div>
+        <div class="ds">青背油脂控的最愛，背上有漂亮波浪花紋（這張左邊就是！右邊那尾是竹筴魚）。鹽烤、味噌煮一流。</div>
+      </div>
+      <div class="item">
+        <img loading="lazy" src="assets/images/fish/白帶魚.jpg" alt="白帶魚">
+        <div class="nm">白帶魚</div>
+        <div class="ds">今晚頭號主角！銀亮亮像一把武士刀，越長越威。牙齒超利，帥歸帥別摸嘴。</div>
+      </div>
+      <div class="item">
+        <img loading="lazy" src="assets/images/fish/透抽.jpg" alt="透抽">
+        <div class="nm">透抽（中卷）</div>
+        <div class="ds">滿船燈火就是為了牠！Q彈鮮甜、透明會發光，燙一下沾哇沙米直接升天。</div>
+      </div>
+      <div class="item">
+        <img loading="lazy" src="assets/images/fish/尖梭.jpg" alt="尖梭">
+        <div class="nm">尖梭</div>
+        <div class="ds">海中小魚雷，速度快、咬餌兇，中魚那瞬間手感超爆。烤一烤香酥涮嘴。</div>
+      </div>
+      <div class="item">
+        <img loading="lazy" src="assets/images/fish/煙仔魚.jpg" alt="煙仔魚">
+        <div class="nm">煙仔魚</div>
+        <div class="ds">鰹魚家族衝刺王，一中鉤就狂奔，新手會以為釣到潛水艇。生魚片超讚。</div>
+      </div>
+    </div>
+
+    <div class="subhead no">🚫 這天通常釣不到的（純漲知識）</div>
+    <div class="fish">
+      <div class="item nope">
+        <span class="tag">✗ 今晚no</span>
+        <img loading="lazy" src="assets/images/fish/青旗魚.jpg" alt="青旗魚">
+        <div class="nm">青旗魚</div>
+        <div class="ds">海上 F1 賽車，衝刺破 70km/h，背鰭一張像揚帆。這種大物今晚不是我們的菜。</div>
+      </div>
+      <div class="item egg">
+        <span class="tag">🥚 彩蛋！</span>
+        <img loading="lazy" src="assets/images/fish/鬼頭刀.jpg" alt="鬼頭刀">
+        <div class="nm">鬼頭刀</div>
+        <div class="ds">額頭方方、體色夢幻漸層的洄游悍將。原本以為釣不到——結果<strong>釣友這次真的給牠拉上船，傳奇誕生！</strong></div>
+      </div>
+      <div class="item nope">
+        <span class="tag">✗ 今晚no</span>
+        <img loading="lazy" src="assets/images/fish/飛魚.jpg" alt="飛魚">
+        <div class="nm">飛魚</div>
+        <div class="ds">會「飛」的魚！張開胸鰭滑翔躲天敵，一口氣能飄數百公尺。蘭嶼名產，但牠不咬鉤，純欣賞。</div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:10px;">📷 魚種照片若取自網路，皆為可自由使用之授權，出處見 <code>assets/images/fish/CREDITS.md</code>。</p>
+  </section>
+
+  <!-- 路線實景 -->
+  <section class="card">
+    <h2><span class="emo">🧭</span> 報到路線實景（跟著走不迷路）</h2>
+    <div class="gallery">
+      <figure><img loading="lazy" src="assets/images/停車場入口.jpg" alt="停車場入口"><figcaption>① 停車場入口</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/往管理室方向走.jpg" alt="往管理室方向走"><figcaption>② 往管理室方向</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/商店大街.jpg" alt="商店大街"><figcaption>③ 經過商店大街</figcaption></figure>
+      <figure><img loading="lazy" src="assets/images/集合地點.jpg" alt="集合地點"><figcaption>④ 抵達集合地點</figcaption></figure>
+    </div>
+    <p class="tip">🚻 小提醒：有些人停好車會從<strong>廁所方向</strong>過來，那就不會經過管理室——<strong>直接走到商店大街（③）</strong>會合即可！</p>
+  </section>
+
+  <!-- 聯絡 -->
+  <section class="card contact">
+    <h2><span class="emo">☎️</span> 有問題？找這位大大</h2>
+    <p>報名、臨時狀況、找不到路、突然害羞……</p>
+    <p>子樂爸爸</p>
+    <p class="phone"><a href="tel:0928666624">0928&nbsp;666&nbsp;624</a></p>
+  </section>
+
+  <footer>
+    <img src="assets/images/彩虹祝我們順利.jpg" alt="彩虹祝我們順利" style="width:100%;max-width:420px;border-radius:14px;border:2px solid #ffffff33;">
+    <p>🌈 彩虹已經先幫我們加持，祝大家大魚上鉤、平安出航！<br>7/4 海上見 🎣</p>
+  </footer>
+
+</div>
+</body>
+</html>

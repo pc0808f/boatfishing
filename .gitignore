@@ -1,0 +1,9 @@
+# Claude Code local files
+.claude/
+
+# Wikimedia 備份（已被釣友實拍取代，不需上版）
+assets/images/fish/_wiki_*.jpg
+
+# 系統雜物
+Thumbs.db
+.DS_Store
